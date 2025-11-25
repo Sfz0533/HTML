@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #fff;
+  background-color: #121212;
+  overflow-x: hidden;
+}
+
+#tsparticles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+header, section {
+  position: relative;
+  z-index: 1;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  color: white;
+  text-align: center;
+  overflow: hidden;
+}
+
+.intro-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.intro-left, .intro-right {
+  width: 50%;
+}
+
+.intro-left {
+  text-align: center;
+}
+
+.intro-right {
+  text-align: center;
+}
+
+.creator-img {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 50%;
+  background-color: #333;
+}
+
+.intro-right img {
+  width: 100%;
+  min-width: 150px;
+  max-width: 300px;
+  border-radius: 10px;
+}
+
+.intro-right h1 {
+  font-size: 2.5rem;
+  margin: 0;
+}
+
+p {
+  font-size: 22px;
+  margin: 0;
+  line-height: 1.2rem;
+}
+
+p span {
+  font-weight: 700;
+}
+
+.social-media {
+  margin: 20px 0;
+}
+
+.social-icon {
+  margin: 0 10px;
+  color: white;
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+
+.cv-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+section {
+  padding: 50px 0;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.section-content {
+  text-align: center;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+#about p {
+  font-size: 18px;
+  line-height: 1.5rem;
+}
+
+#contact form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#contact label {
+  font-size: 1rem;
+}
+
+#contact input, #contact textarea {
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+#contact button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0;
+  transition: all 0.3s ease;
+}
+
+.project-card img {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 10px;
+  background-color: #333;
+}
+
+.project-text {
+  width: 100%;
+  padding: 20px;
+}
+
+.title {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 0.15em solid orange;
+  font-family: monospace;
+  font-size: 1.5rem;
+  animation: typing 4s steps(40, end);
+}
+
+.description {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  line-height: 1.2rem;
+  font-family: monospace;
+  font-size: 1rem;
+  margin-top: 10px;
+  animation: typing 6s steps(30, end);
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .intro-content {
+    flex-direction: row;
+  }
+
+  .intro-left,
+  .intro-right {
+    width: 50%;
+  }
+
+  .project-card {
+    flex-direction: row;
+  }
+
+  .project-card:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+}
+
+@media (max-width: 767px) {
+  .project-card {
+    flex-direction: column;
+  }
+
+  .project-card img {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .intro-content {
+    flex-direction: column;
+  }
+
+  .intro-left,
+  .intro-right {
+    width: 100%;
+  }
+}
+
+    </style>
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", () => {
+  let e = ["a Programmer", "an Artist", "a Freelancer", "a Data Analyst"],
+    t = document.getElementById("role");
+  document.getElementById("profession");
+  let n = 0;
+  function a(e, t, n) {
+    let a = 0,
+      o = setInterval(() => {
+        (t.textContent += e.charAt(a)),
+          ++a > e.length && (clearInterval(o), setTimeout(n, 2e3));
+      }, 100);
+  }
+  function o(e, t) {
+    let n = e.textContent,
+      a = n.length,
+      o = setInterval(() => {
+        (e.textContent = n.substring(0, a)), --a < 0 && (clearInterval(o), t());
+      }, 50);
+  }
+  function l() {
+    o(t, () => {
+      a(e[(n = (n + 1) % e.length)], t, l);
+    });
+  }
+  a(e[n], t, l),
+    tsParticles.load("tsparticles", {
+      background: { color: "#121212" },
+      particles: {
+        number: { value: 80, density: { enable: !0, value_area: 800 } },
+        color: { value: "#ffffff" },
+        shape: { type: "circle" },
+        opacity: {
+          value: 0.5,
+          anim: { enable: !0, speed: 1, opacity_min: 0.1, sync: !1 }
+        },
+        size: {
+          value: 3,
+          anim: { enable: !0, speed: 4, size_min: 0.1, sync: !1 }
+        },
+        move: {
+          enable: !0,
+          speed: 2,
+          direction: "none",
+          random: !1,
+          straight: !1,
+          out_mode: "out",
+          bounce: !1,
+          attract: { enable: !1, rotateX: 600, rotateY: 1200 }
+        },
+        line_linked: {
+          enable: !0,
+          distance: 150,
+          color: "#ffffff",
+          opacity: 0.4,
+          width: 1
+        },
+        interactivity: {
+          events: {
+            onhover: { enable: !0, mode: "repulse" },
+            onclick: { enable: !0, mode: "push" }
+          },
+          modes: {
+            repulse: { distance: 100, duration: 0.4 },
+            push: { quantity: 4 }
+          }
+        }
+      },
+      retina_detect: !0
+    });
+});
+
+    </script>
+  </head>
+  <body>
+    
+  
+    <header id="intro">
+    <div id="tsparticles"></div>
+      <div class="intro-content">
+            <div class="intro-left">
+                <img src="Hamid_ea37b19d-ad15-4832-b5a9-45d6eb0b4932.jfif" alt="Creator" class="creator-img">
+            </div>
+            <div class="intro-left">
+                <h1 id="profession">Hi, I'm <span>Shaikh Abdul Hamid</span></h1>
+                <p>                    I'm <span id="role"></span>.
+                </p>
+                <div class="social-media">
+        <a href="https://github.com/coderooz" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=61562424744859" target="_blank" class="social-icon"><i class="fab fa-facebook"></i></a>
+        <a href="https://x.com/RanitSaha2002" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
+        <a href="www.linkedin.com/in/ranit-saha-b044a6184" target="_blank" class="social-icon"><i class="fab fa-linkedin"></i></a>
+      </div>
+                <a href="path/to/cv.pdf" class="cv-btn" download>Download CV</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="about">
+        <div class="section-content">
+            <h2>About Me</h2>
+            <p>I'm a passionate developer with experience in various technologies. I enjoy solving complex problems and building innovative solutions. My skills range from programming to graphic design, and I'm always eager to learn more and take on new challenges.</p>
+        </div>
+    </section>
+    <section id="contact">
+        <div class="section-content">
+            <h2>Contact Me</h2>
+            <form action="send-message.php" method="POST">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+                
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+
+    </body>
+  </html>
